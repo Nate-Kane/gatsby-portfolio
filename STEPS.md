@@ -7,11 +7,12 @@ Phase 1: Gatsby Setup
 4. ~~Push intialized project to github~~
 
 Phase 2: Content Migration
-1. Create Markdown files for portfolio content (projects, skills, experience)
-2. Set up Gatsby plugins for Markdown processing
-3. Migrate components from current portfolio to Gatsby
-4. Set up styling (CSS modules or styled-components)
-5. Test site thoroughly locally
+1. ~~Create Markdown files for portfolio content (projects, skills, experience)~~
+2. ~~Set up Gatsby plugins for Markdown processing~~
+3. Set up empty components as placeholders
+4. Set up general styling & background
+5. Migrate full components from current portfolio to Gatsby
+6. Clean up styling (CSS modules or styled-components)
 
 Phase 3: New Content
 1. Add additional projects (Progrexion work, drive sunny, others?)
