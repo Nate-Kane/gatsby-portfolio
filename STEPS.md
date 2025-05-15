@@ -9,8 +9,8 @@ Phase 1: Gatsby Setup
 Phase 2: Content Migration
 1. ~~Create Markdown files for portfolio content (projects, skills, experience)~~
 2. ~~Set up Gatsby plugins for Markdown processing~~
-3. Set up empty components as placeholders
-4. Set up general styling & background
+3. ~~Set up empty components as placeholders~~
+4. ~~Set up general styling & background~~
 5. Migrate full components from current portfolio to Gatsby
 6. Clean up styling (CSS modules or styled-components)
 
