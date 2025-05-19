@@ -7,7 +7,7 @@ const NavbarContainer = styled.nav`
   top: 0;
   width: 100%;
   z-index: 100;
-  padding: 1rem 0;
+  padding: 36px 0 16px;
 `;
 
 const NavbarContent = styled.div`
@@ -16,11 +16,11 @@ const NavbarContent = styled.div`
   align-items: center;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 32px;
 `;
 
 const NavbarBrand = styled.div`
-  font-size: 1.5rem;
+  font-size: 24px;
   font-weight: 700;
   color: white;
 `;
@@ -29,20 +29,51 @@ const MenuButton = styled.button`
   background: none;
   border: none;
   cursor: pointer;
-  width: 40px;
+  width: 80px;
   height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
   z-index: 101;
+  position: relative;
+`;
+
+const HamburgerIcon = styled.div<{ isOpen: boolean }>`
+  width: 48px;
+  height: 32px;
+  position: relative;
+  transform: rotate(0deg);
+  transition: .5s ease-in-out;
+  cursor: pointer;
   
-  svg {
-    width: 24px;
-    height: 24px;
+  span {
+    display: block;
+    position: absolute;
+    height: 4px;
+    width: 100%;
+    background: white;
+    border-radius: 9px;
+    opacity: 1;
+    left: 0;
+    transform: rotate(0deg);
+    transition: .5s ease-in-out;
     
-    path {
-      fill: white;
+    &:nth-of-type(1) {
+      top: ${props => props.isOpen ? '18px' : '0px'};
+      transform: ${props => props.isOpen ? 'rotate(135deg)' : 'rotate(0deg)'};
+    }
+    
+    &:nth-of-type(2) {
+      top: ${props => props.isOpen ? '0px' : '14px'};
+      opacity: ${props => props.isOpen ? '0' : '1'};
+      left: ${props => props.isOpen ? '60px' : '0px'};
+      transform: ${props => props.isOpen ? 'rotate(-250deg) scale(0.25)' : 'rotate(0deg) scale(1)'};
+    }
+    
+    &:nth-of-type(3) {
+      top: ${props => props.isOpen ? '18px' : '28px'};
+      transform: ${props => props.isOpen ? 'rotate(-135deg)' : 'rotate(0deg)'};
     }
   }
 `;
@@ -71,21 +102,38 @@ const NavList = styled.ul`
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 50px;
   text-align: center;
 `;
 
 const NavItem = styled.li`
-  font-size: 2rem;
+  font-size: 42px;
   font-weight: 500;
   
   a {
-    color: white;
+    color: rgba(255, 255, 255, 0.7);
     text-decoration: none;
     transition: color 0.3s ease;
+    position: relative;
+    
+    &:after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -5px;
+      left: 50%;
+      background-color: white;
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
+    }
     
     &:hover {
-      color: rgba(255, 255, 255, 0.7);
+      color: white;
+      
+      &:after {
+        width: 100%;
+      }
     }
   }
 `;
@@ -98,20 +146,16 @@ const Navbar: React.FC = () => {
       <NavbarContent>
         <NavbarBrand>Nate Kane</NavbarBrand>
         <MenuButton onClick={() => setIsMenuOpen(!isMenuOpen)}>
-          {isMenuOpen ? (
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="icon-close">
-              <path className="secondary" fillRule="evenodd" d="M15.78 14.36a1 1 0 0 1-1.42 1.42l-2.82-2.83-2.83 2.83a1 1 0 1 1-1.42-1.42l2.83-2.82L7.3 8.7a1 1 0 0 1 1.42-1.42l2.83 2.83 2.82-2.83a1 1 0 0 1 1.42 1.42l-2.83 2.83 2.83 2.82z" />
-            </svg>
-          ) : (
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="icon-menu">
-              <path className="secondary" fillRule="evenodd" d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z" />
-            </svg>
-          )}
+          <HamburgerIcon isOpen={isMenuOpen}>
+            <span></span>
+            <span></span>
+            <span></span>
+          </HamburgerIcon>
         </MenuButton>
       </NavbarContent>
       
       <MenuOverlay isOpen={isMenuOpen}>
-        <NavList>
+        <NavList onClick={() => setIsMenuOpen(!isMenuOpen)}>
           <NavItem><a href="#about">About</a></NavItem>
           <NavItem><a href="#projects">Projects</a></NavItem>
           <NavItem><a href="#skills">Skills</a></NavItem>
@@ -123,13 +167,3 @@ const Navbar: React.FC = () => {
 };
 
 export default Navbar;
-
-// menu svg:
-/* 
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon-menu"><path class="secondary" fill-rule="evenodd" d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"/></svg>
-*/
-
-/**
- * close icon svg
- * <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon-close"><path class="secondary" fill-rule="evenodd" d="M15.78 14.36a1 1 0 0 1-1.42 1.42l-2.82-2.83-2.83 2.83a1 1 0 1 1-1.42-1.42l2.83-2.82L7.3 8.7a1 1 0 0 1 1.42-1.42l2.83 2.83 2.82-2.83a1 1 0 0 1 1.42 1.42l-2.83 2.83 2.83 2.82z"/></svg>
- */
