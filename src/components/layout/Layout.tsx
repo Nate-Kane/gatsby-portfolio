@@ -47,18 +47,13 @@ const ScrollableContent = styled.div`
   overflow-y: auto;
   z-index: 1;
   
-  /* Custom scrollbar styling */
+  /* Hide scrollbar for all browsers */
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+  
+  /* Hide scrollbar for Chrome, Safari and Opera */
   &::-webkit-scrollbar {
-    width: 8px;
-  }
-  
-  &::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.2);
-  }
-  
-  &::-webkit-scrollbar-thumb {
-    background-color: rgba(255, 255, 255, 0.3);
-    border-radius: 4px;
+    display: none;
   }
 `;
 
