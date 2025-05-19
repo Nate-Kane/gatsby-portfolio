@@ -1,11 +1,18 @@
 import React, { ReactNode } from "react";
 import { graphql, useStaticQuery } from "gatsby";
 import styled from "@emotion/styled";
+import { keyframes } from "@emotion/react";
 import "../../styles/global.css";
 
 interface LayoutProps {
   children: ReactNode;
 }
+
+const pulseAndRotate = keyframes`
+  0% { transform: scale(1) rotate(0deg); }
+  50% { transform: scale(1.3) rotate(4deg); }
+  100% { transform: scale(1) rotate(0deg); }
+`;
 
 const BackgroundWrapper = styled.div`
   position: fixed;
@@ -27,6 +34,8 @@ const BackgroundImage = styled.div<{ imageUrl: string }>`
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  animation: ${pulseAndRotate} 120s ease-in-out infinite;
+  transform-origin: center center;
 `;
 
 const ScrollableContent = styled.div`
