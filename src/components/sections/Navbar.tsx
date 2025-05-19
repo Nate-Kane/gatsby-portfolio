@@ -37,6 +37,11 @@ const MenuButton = styled.button`
   color: white;
   z-index: 101;
   position: relative;
+  
+  @media (max-width: 768px) {
+    width: 60px;
+    height: 30px;
+  }
 `;
 
 const HamburgerIcon = styled.div<{ isOpen: boolean }>`
@@ -46,6 +51,11 @@ const HamburgerIcon = styled.div<{ isOpen: boolean }>`
   transform: rotate(0deg);
   transition: .5s ease-in-out;
   cursor: pointer;
+  
+  @media (max-width: 768px) {
+    width: 36px;
+    height: 24px;
+  }
   
   span {
     display: block;
@@ -59,9 +69,17 @@ const HamburgerIcon = styled.div<{ isOpen: boolean }>`
     transform: rotate(0deg);
     transition: .5s ease-in-out;
     
+    @media (max-width: 768px) {
+      height: 3px;
+    }
+    
     &:nth-of-type(1) {
       top: ${props => props.isOpen ? '18px' : '0px'};
       transform: ${props => props.isOpen ? 'rotate(135deg)' : 'rotate(0deg)'};
+      
+      @media (max-width: 768px) {
+        top: ${props => props.isOpen ? '14px' : '0px'};
+      }
     }
     
     &:nth-of-type(2) {
@@ -69,11 +87,20 @@ const HamburgerIcon = styled.div<{ isOpen: boolean }>`
       opacity: ${props => props.isOpen ? '0' : '1'};
       left: ${props => props.isOpen ? '60px' : '0px'};
       transform: ${props => props.isOpen ? 'rotate(-250deg) scale(0.25)' : 'rotate(0deg) scale(1)'};
+      
+      @media (max-width: 768px) {
+        top: ${props => props.isOpen ? '0px' : '10px'};
+        left: ${props => props.isOpen ? '45px' : '0px'};
+      }
     }
     
     &:nth-of-type(3) {
       top: ${props => props.isOpen ? '18px' : '28px'};
       transform: ${props => props.isOpen ? 'rotate(-135deg)' : 'rotate(0deg)'};
+      
+      @media (max-width: 768px) {
+        top: ${props => props.isOpen ? '14px' : '21px'};
+      }
     }
   }
 `;
