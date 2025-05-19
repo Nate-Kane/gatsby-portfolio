@@ -84,9 +84,8 @@ const MenuOverlay = styled.div<{ isOpen: boolean }>`
   right: 0;
   width: 100%;
   height: 100vh;
-  background: rgba(41, 98, 255, 0.15);
+  background: rgba(21, 52, 136, 0.15);
   backdrop-filter: blur(10px);
-  border-left: 1px solid rgba(255, 255, 255, 0.2);
   display: flex;
   flex-direction: column;
   justify-content: center;
