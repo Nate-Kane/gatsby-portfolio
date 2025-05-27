@@ -22,7 +22,7 @@ const NavbarContent = styled.div`
 const NavbarBrand = styled.div`
   font-size: 24px;
   font-weight: 700;
-  color: white;
+  color: var(--primary-color);
 `;
 
 const MenuButton = styled.button`
@@ -34,7 +34,7 @@ const MenuButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: var(--primary-color);
   z-index: 101;
   position: relative;
   
@@ -62,7 +62,7 @@ const HamburgerIcon = styled.div<{ isOpen: boolean }>`
     position: absolute;
     height: 4px;
     width: 100%;
-    background: white;
+    background: var(--primary-color);
     border-radius: 9px;
     opacity: 1;
     left: 0;
@@ -137,7 +137,7 @@ const NavItem = styled.li`
   font-weight: 500;
   
   a {
-    color: rgba(255, 255, 255, 0.7);
+    color: var(--primary-color);
     text-decoration: none;
     transition: color 0.3s ease;
     position: relative;
@@ -149,13 +149,13 @@ const NavItem = styled.li`
       height: 2px;
       bottom: -5px;
       left: 50%;
-      background-color: white;
+      background-color: var(--primary-color);
       transition: all 0.3s ease;
       transform: translateX(-50%);
     }
     
     &:hover {
-      color: white;
+      color: var(--primary-color);
       
       &:after {
         width: 100%;

@@ -1,0 +1,32 @@
+:root {
+  --font-size-xxs: 12px;
+  --font-size-xs: 14px;
+  --font-size-sm: 16px;
+  --font-size-md: 18px;
+  --font-size-lg: 20px;
+  --font-size-xl: 24px;
+  --font-size-2xl: 30px;
+  --font-size-3xl: 36px;
+  --font-size-4xl: 48px;
+  --font-size-5xl: 60px;
+  --font-size-6xl: 72px;
+  --font-family-main: 'Open Sans', Arial, sans-serif;
+  --primary-color: hsl(266 0% 80%);
+}
+
+/* Responsive overrides for screens 600px and below */
+@media (max-width: 600px) {
+  :root {
+    --font-size-xxs: 10px;
+    --font-size-xs: 12px;
+    --font-size-sm: 14px;
+    --font-size-md: 15px;
+    --font-size-lg: 16px;
+    --font-size-xl: 18px;
+    --font-size-2xl: 20px;
+    --font-size-3xl: 22px;
+    --font-size-4xl: 28px;
+    --font-size-5xl: 36px;
+    --font-size-6xl: 44px;
+  }
+}
