@@ -72,7 +72,7 @@ const Hero: React.FC = () => {
 
   const TimerDiv = styled.div`
     margin: 20px auto 0 auto;
-    font-size: var(--font-size-lg);
+    font-size: var(--font-size-md);
     font-family: var(--font-family-main);
     letter-spacing: 1px;
     background: rgba(0,0,0,0.3);
@@ -84,7 +84,7 @@ const Hero: React.FC = () => {
   `;
 
   return (
-    <section className="hero">
+    <section className="hero" id="hero">
       <div className="container">
         <h1>{author}</h1>
         <JobTitleDiv>{jobTitle} of</JobTitleDiv>

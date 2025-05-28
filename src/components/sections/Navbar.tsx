@@ -182,10 +182,11 @@ const Navbar: React.FC = () => {
       
       <MenuOverlay isOpen={isMenuOpen}>
         <NavList onClick={() => setIsMenuOpen(!isMenuOpen)}>
-          <NavItem><a href="#about">About</a></NavItem>
-          <NavItem><a href="#projects">Projects</a></NavItem>
+          <NavItem><a href="#hero">Home</a></NavItem>
           <NavItem><a href="#skills">Skills</a></NavItem>
-          <NavItem><a href="#contact">Contact</a></NavItem>
+          <NavItem><a href="#projects">Projects</a></NavItem>
+          <NavItem><a href="#about">About</a></NavItem>
+          {/* <NavItem><a href="#contact">Contact</a></NavItem> */}
         </NavList>
       </MenuOverlay>
     </NavbarContainer>

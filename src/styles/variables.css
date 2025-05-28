@@ -15,18 +15,18 @@
 }
 
 /* Responsive overrides for screens 600px and below */
-@media (max-width: 600px) {
+@media (max-width: 700px) {
   :root {
-    --font-size-xxs: 10px;
-    --font-size-xs: 12px;
-    --font-size-sm: 14px;
-    --font-size-md: 15px;
+    --font-size-xxs: 8px;
+    --font-size-xs: 10px;
+    --font-size-sm: 11px;
+    --font-size-md: 12px;
     --font-size-lg: 16px;
     --font-size-xl: 18px;
     --font-size-2xl: 20px;
     --font-size-3xl: 22px;
     --font-size-4xl: 28px;
     --font-size-5xl: 36px;
-    --font-size-6xl: 44px;
+    --font-size-6xl: 54px;
   }
 }
