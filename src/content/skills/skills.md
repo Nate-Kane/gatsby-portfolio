@@ -24,6 +24,10 @@ toolkit:
     logo: "/logos/prompt-engineering.svg"
   - name: "Solution Research"
     logo: "/logos/solution-research.svg"
+  - name: "Gatsby JS"
+    logo: "/logos/github.svg"
+  - name: "Digital Ocean"
+    logo: "/logos/github.svg"
 extended:
   - name: "React Native"
     logo: "/logos/react.svg"
@@ -32,5 +36,7 @@ extended:
   - name: "AEM"
     logo: "/logos/aem.svg"
   - name: "CMS Platforms"
+    logo: "/logos/cms.svg"
+  - name: "Graph QL"
     logo: "/logos/cms.svg"
 ---
