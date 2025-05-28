@@ -11,7 +11,7 @@
   --font-size-5xl: 60px;
   --font-size-6xl: 112px;
   --font-family-main: 'Open Sans', Arial, sans-serif;
-  --primary-color: hsl(0 0% 85%);
+  --primary-color: hsl(250 30% 85%);
 }
 
 /* Responsive overrides for screens 600px and below */
