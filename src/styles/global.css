@@ -21,6 +21,7 @@ body {
   overflow: hidden; /* Prevent scrolling on the body */
   height: 100%;
   width: 100%;
+  text-transform: uppercase;
 }
 
 /* Container */
@@ -37,9 +38,9 @@ section {
 }
 
 section h1 {
-  margin-bottom: 40px;
   text-align: center;
   font-size: var(--font-size-6xl);
+  font-weight: 700;
 }
 
 section h2 {

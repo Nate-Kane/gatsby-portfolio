@@ -5,7 +5,7 @@ const config: GatsbyConfig = {
     title: `Nate Kane Portfolio`,
     siteUrl: `https://www.yourdomain.tld`,
     author: `Nate Kane`,
-    jobTitles: [`Software Engineer`, `Web Developer`],
+    jobTitle: `Software Engineer`,
     developerStartDate: `2020-11-01`, // November 1, 2020
     description: `Portfolio website for Nate Kane, Software Engineer and Web Developer`
   },

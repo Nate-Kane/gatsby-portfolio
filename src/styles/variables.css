@@ -9,9 +9,9 @@
   --font-size-3xl: 36px;
   --font-size-4xl: 48px;
   --font-size-5xl: 60px;
-  --font-size-6xl: 72px;
+  --font-size-6xl: 112px;
   --font-family-main: 'Open Sans', Arial, sans-serif;
-  --primary-color: hsl(266 0% 80%);
+  --primary-color: hsl(0 0% 85%);
 }
 
 /* Responsive overrides for screens 600px and below */
