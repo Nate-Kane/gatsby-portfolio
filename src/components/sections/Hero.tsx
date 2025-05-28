@@ -1,8 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import styled from "@emotion/styled";
 import { graphql, useStaticQuery } from "gatsby";
 
-const Hero: React.FC = () => {
+interface HeroProps {
+  onHeroOutOfView?: (out: boolean) => void;
+}
+
+const Hero: React.FC<HeroProps> = ({ onHeroOutOfView }) => {
   const data = useStaticQuery(graphql`
     query {
       site {
@@ -61,6 +65,20 @@ const Hero: React.FC = () => {
     return () => clearInterval(interval);
   }, []);
 
+  // Intersection Observer for hero visibility
+  const heroRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (!onHeroOutOfView) return;
+    const observer = new window.IntersectionObserver(
+      ([entry]) => {
+        onHeroOutOfView(!entry.isIntersecting);
+      },
+      { threshold: 0.1 }
+    );
+    if (heroRef.current) observer.observe(heroRef.current);
+    return () => observer.disconnect();
+  }, [onHeroOutOfView]);
+
   // Pad minutes/seconds with leading zeros if needed
   const pad = (n: number) => n.toString().padStart(2, "0");
 
@@ -85,7 +103,7 @@ const Hero: React.FC = () => {
 
   return (
     <section className="hero" id="hero">
-      <div className="container">
+      <div className="container" ref={heroRef}>
         <h1>{author}</h1>
         <JobTitleDiv>{jobTitle} of</JobTitleDiv>
         <TimerDiv>

@@ -9,10 +9,12 @@ import Skills from "../components/sections/Skills"
 import Footer from "../components/sections/Footer"
 
 const IndexPage: React.FC<PageProps> = () => {
+  const [heroOutOfView, setHeroOutOfView] = React.useState(false);
+
   return (
     <Layout>
-      <Navbar />
-      <Hero />
+      <Navbar showBrand={heroOutOfView} />
+      <Hero onHeroOutOfView={setHeroOutOfView} />
       <Skills />
       <Projects />
       <About />

@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import styled from "@emotion/styled";
 
+interface NavbarProps {
+  showBrand?: boolean;
+}
+
 // Styled components
 const NavbarContainer = styled.nav`
   position: sticky;
@@ -19,10 +23,21 @@ const NavbarContent = styled.div`
   padding: 0 32px;
 `;
 
-const NavbarBrand = styled.div`
-  font-size: 24px;
+const SiteName = styled.div<{ visible: boolean }>`
+  cursor: pointer;
+  font-size: var(--font-size-2xl);
   font-weight: 700;
   color: var(--primary-color);
+  opacity: ${props => (props.visible ? 1 : 0)};
+  transform: translateX(${props => (props.visible ? "0" : "-40px")});
+  transition: opacity 0.3s, transform 0.3s;
+
+  a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    position: relative;
+  }
 `;
 
 const MenuButton = styled.button`
@@ -133,7 +148,7 @@ const NavList = styled.ul`
 `;
 
 const NavItem = styled.li`
-  font-size: 42px;
+  font-size: var(--font-size-4xl);
   font-weight: 500;
   
   a {
@@ -164,13 +179,12 @@ const NavItem = styled.li`
   }
 `;
 
-const Navbar: React.FC = () => {
+const Navbar: React.FC<NavbarProps> = ({ showBrand }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  
   return (
     <NavbarContainer>
       <NavbarContent>
-        <NavbarBrand>Nate Kane</NavbarBrand>
+        <SiteName visible={!!showBrand}><a href="#hero">Nate Kane</a></SiteName>
         <MenuButton onClick={() => setIsMenuOpen(!isMenuOpen)}>
           <HamburgerIcon isOpen={isMenuOpen}>
             <span></span>
@@ -179,7 +193,6 @@ const Navbar: React.FC = () => {
           </HamburgerIcon>
         </MenuButton>
       </NavbarContent>
-      
       <MenuOverlay isOpen={isMenuOpen}>
         <NavList onClick={() => setIsMenuOpen(!isMenuOpen)}>
           <NavItem><a href="#hero">Home</a></NavItem>
