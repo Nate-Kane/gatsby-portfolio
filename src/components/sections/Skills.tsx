@@ -35,12 +35,30 @@ const SkillItemDiv = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
+  width: 60px;
+  height: 80px;
+  @media (max-width: 700px) {
+    width: 40px;
+    height: 60px;
+  }
+  &:hover img {
+    transform: translateY(-8px);
+    opacity: 1;
+    filter: none;
+  }
+  &:hover div {
+    opacity: 1;
+    transform: translateY(0);
+  }
 `;
 
 const SkillLogo = styled.img`
   width: 60px;
   height: 60px;
   filter: grayscale(0.2) brightness(1.2) opacity(0.7);
+  opacity: 0.7;
+  transition: transform 0.2s, filter 0.2s, opacity 0.2s;
 
   @media (max-width: 700px) {
     width: 40px;
@@ -53,7 +71,10 @@ const SkillName = styled.div`
   font-weight: 700;
   color: var(--primary-color);
   letter-spacing: 1px;
-  text-align: center;
+  opacity: 0;
+  width: max-content;
+  white-space: nowrap;
+  margin-top: 15px;
 `;
 
 const Skills: React.FC = () => {
@@ -98,7 +119,7 @@ const Skills: React.FC = () => {
           {allSkills.map(skill => (
             <SkillItemDiv key={skill.name}>
               <SkillLogo src={skill.logo} alt={skill.name} />
-              {/* <div style={{ fontSize: '1rem', fontWeight: 500 }}>{skill.name}</div> */}
+              <SkillName>{skill.name}</SkillName>
             </SkillItemDiv>
           ))}
         </SkillsContainer>
