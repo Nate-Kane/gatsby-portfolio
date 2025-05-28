@@ -11,9 +11,8 @@ Phase 2: Content Migration
 2. ~~Set up Gatsby plugins for Markdown processing~~
 3. ~~Set up empty components as placeholders~~
 4. ~~Set up general styling & background~~
-5. Establish a style guide (fonts, font sizes, spacing, colors, etc so that as I add content it all looks consistent)
+5. ~~Establish a style guide (fonts, font sizes, spacing, colors, etc so that as I add content it all looks consistent)~~
 6. Migrate full components from current portfolio to Gatsby
-7. Clean up styling (CSS modules or styled-components)
 
 Phase 3: New Content
 1. Add additional projects (Progrexion work, drive sunny, others?)
