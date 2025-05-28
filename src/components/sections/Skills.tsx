@@ -17,23 +17,35 @@ interface SkillsNode {
 }
 
 const SkillsContainer = styled.div`
-  display: flex;
-  padding: 30px 0;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 40px;
+  max-width: 600px;
+  margin: 0 auto;
+  justify-items: center;
+  align-items: center;
+
+  @media (max-width:450px) {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+  }
 `;
 
 const SkillItemDiv = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 10px;
 `;
 
 const SkillLogo = styled.img`
-  width: 30px;
-  height: 30px;
-  margin-bottom: 0.7rem;
+  width: 60px;
+  height: 60px;
   filter: grayscale(0.2) brightness(1.2) opacity(0.7);
+
+  @media (max-width: 700px) {
+    width: 40px;
+    height: 40px;
+  }
 `;
 
 const SkillName = styled.div`
@@ -72,32 +84,24 @@ const Skills: React.FC = () => {
   `);
 
   const skillsNode: SkillsNode | undefined = data.allMarkdownRemark.nodes[0];
-
-  const renderSkillGrid = (skills: SkillItem[] = []) => (
-    <SkillsContainer>
-      {skills.map(skill => (
-        <SkillItemDiv key={skill.name}>
-          <SkillLogo src={skill.logo} alt={skill.name} />
-          <SkillName>{skill.name}</SkillName>
-        </SkillItemDiv>
-      ))}
-    </SkillsContainer>
-  );
+  const allSkills: SkillItem[] = [
+    ...(skillsNode?.frontmatter.specialization || []),
+    ...(skillsNode?.frontmatter.toolkit || []),
+    ...(skillsNode?.frontmatter.extended || []),
+  ];
 
   return (
     <section className="skills" id="skills">
       <div className="container">
         <h2>Skills</h2>
-        {skillsNode && (
-          <>
-            <h3>Specialization</h3>
-            {renderSkillGrid(skillsNode.frontmatter.specialization)}
-            <h3>Toolkit</h3>
-            {renderSkillGrid(skillsNode.frontmatter.toolkit)}
-            <h3>Extended</h3>
-            {renderSkillGrid(skillsNode.frontmatter.extended)}
-          </>
-        )}
+        <SkillsContainer >
+          {allSkills.map(skill => (
+            <SkillItemDiv key={skill.name}>
+              <SkillLogo src={skill.logo} alt={skill.name} />
+              {/* <div style={{ fontSize: '1rem', fontWeight: 500 }}>{skill.name}</div> */}
+            </SkillItemDiv>
+          ))}
+        </SkillsContainer>
       </div>
     </section>
   );
