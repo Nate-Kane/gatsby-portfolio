@@ -24,8 +24,9 @@ const SkillsContainer = styled.div`
   margin: 0 auto;
   justify-items: center;
   align-items: center;
+  padding: 0 25px;
 
-  @media (max-width:450px) {
+  @media (max-width:500px) {
     grid-template-columns: repeat(4, 1fr);
     gap: 30px;
   }
@@ -57,7 +58,7 @@ const SkillLogo = styled.img`
   width: 60px;
   height: 60px;
   filter: grayscale(0.2) brightness(1.2) opacity(0.7);
-  opacity: 0.7;
+  opacity: 0.8;
   transition: transform 0.2s, filter 0.2s, opacity 0.2s;
 
   @media (max-width: 700px) {
@@ -67,14 +68,14 @@ const SkillLogo = styled.img`
 `;
 
 const SkillName = styled.div`
-  font-size: var(--font-size-lg);
+  font-size: var(--font-size-md);
   font-weight: 700;
   color: var(--primary-color);
   letter-spacing: 1px;
   opacity: 0;
   width: max-content;
   white-space: nowrap;
-  margin-top: 15px;
+  margin-top: 10px;
 `;
 
 const Skills: React.FC = () => {
