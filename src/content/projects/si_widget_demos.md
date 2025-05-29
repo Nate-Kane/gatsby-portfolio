@@ -1,4 +1,5 @@
 ---
+category: "Project"
 title: "ShipInsure Widget Demos"
 slug: "shipinsure-widget-demos"
 description: "An idea I pitched to, then built for, one of my employers. One of ShipInsure's core product is a widget. This site allows clients to view and customize any version of the widget."
