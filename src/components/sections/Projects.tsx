@@ -2,6 +2,7 @@ import { useStaticQuery, graphql } from "gatsby";
 import React from "react";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import type { IGatsbyImageData } from "gatsby-plugin-image";
+import styled from "@emotion/styled";
 
 interface ProjectNode {
   frontmatter: {
@@ -17,6 +18,27 @@ interface ProjectNode {
     };
   };
 }
+
+const ProjectsGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  max-width: 900px;
+  margin: 0 auto;
+
+  @media (max-width: 910px) {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 575px;
+  }
+  @media (max-width: 600px) {
+    max-width: 270px;
+    grid-template-columns: 1fr;
+  }
+`;
+
+const ImageThumbnail = styled(GatsbyImage)`
+  cursor: pointer;
+`
 
 const Projects: React.FC = () => {
   const data = useStaticQuery(graphql`
@@ -46,27 +68,26 @@ const Projects: React.FC = () => {
     <section className="projects" id="projects">
       <div className="container">
         <h2>Projects</h2>
-        <div>
+        <ProjectsGrid>
           {projects.map(project => {
             const imageData = getImage(project.frontmatter.featuredImage);
             return (
               <div key={project.frontmatter.slug}>
                 {imageData ? (
-                  <GatsbyImage
+                  <ImageThumbnail
                     image={imageData}
                     alt={project.frontmatter.title}
-                    style={{ width: 200, height: 200, objectFit: "cover" }}
+                    style={{ width: 270, height: 130, objectFit: "cover" }}
                   />
                 ) : (
-                  <div style={{ width: 200, height: 200, background: "#ccc", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <div style={{ width: 270, height: 130, background: "#ccc", display: "flex", alignItems: "center", justifyContent: "center" }}>
                     No Image
                   </div>
                 )}
-                {/* <div>{project.frontmatter.title}</div> */}
               </div>
             );
           })}
-        </div>
+        </ProjectsGrid>
       </div>
     </section>
   );
