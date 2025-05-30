@@ -14,10 +14,14 @@ const config: GatsbyConfig = {
   // Learn more at: https://gatsby.dev/graphql-typegen
   graphqlTypegen: true,
   plugins: [
-    "gatsby-transformer-remark",
-    "gatsby-plugin-sharp",
-    "gatsby-transformer-sharp",
-    "gatsby-plugin-image",
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        "name": "images",
+        "path": "./src/images/"
+      },
+      __key: "images"
+    },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
@@ -29,11 +33,27 @@ const config: GatsbyConfig = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        "name": "images",
-        "path": "./src/images/"
+        name: 'project-images',
+        path: './src/content/projects/',
       },
-      __key: "images"
+      __key: 'project-images'
     },
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 600,
+            },
+          },
+        ],
+      },
+    },
+    "gatsby-plugin-sharp",
+    "gatsby-transformer-sharp",
+    "gatsby-plugin-image",
     {
       resolve: `gatsby-omni-font-loader`,
       options: {

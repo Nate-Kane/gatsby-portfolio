@@ -11,7 +11,7 @@ technologies:
   - "CSS"
   - "Vite"
   - "Firebase"
-imageUrl: "../../../images/guitar_practices.png"
+featuredImage: ../../images/guitar_practices.png
 ---
 
 The Guitar Practice Assistant helps users overcome common challenges in learning guitar by providing structured practice exercises.

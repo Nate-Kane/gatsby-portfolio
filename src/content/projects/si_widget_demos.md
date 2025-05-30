@@ -8,7 +8,7 @@ technologies:
   - "Vanilla JS"
   - "HTML"
   - "CSS"
-imageUrl: "../../../images/widget_demos.png"
+featuredImage: ../../images/widget_demos.png
 ---
 
 This demo site showcases customizable widget solutions for ShipInsure clients, allowing them to visualize and configure the widget to their specific needs.

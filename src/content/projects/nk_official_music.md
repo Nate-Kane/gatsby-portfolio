@@ -6,7 +6,7 @@ description: "My side passion is music! I built this site as a hub for all thing
 projectUrl: "https://www.natekaneofficial.com"
 technologies: 
   - "Wix"
-imageUrl: "../../../images/nk_music_landing.png"
+featuredImage: ../../images/nk_music_landing.png
 ---
 
 A dedicated website for my musical endeavors, featuring upcoming shows, music releases, and other music-related content.

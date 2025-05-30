@@ -1,5 +1,7 @@
 import { useStaticQuery, graphql } from "gatsby";
 import React from "react";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import type { IGatsbyImageData } from "gatsby-plugin-image";
 
 interface ProjectNode {
   frontmatter: {
@@ -8,7 +10,11 @@ interface ProjectNode {
     description: string;
     projectUrl: string;
     technologies: string[];
-    imageUrl: string;
+    featuredImage: {
+      childImageSharp: {
+        gatsbyImageData: IGatsbyImageData;
+      };
+    };
   };
 }
 
@@ -23,7 +29,11 @@ const Projects: React.FC = () => {
             description
             projectUrl
             technologies
-            imageUrl
+            featuredImage {
+              childImageSharp {
+                gatsbyImageData(width: 600, placeholder: BLURRED)
+              }
+            }
           }
         }
       }
@@ -37,13 +47,29 @@ const Projects: React.FC = () => {
       <div className="container">
         <h2>Projects</h2>
         <div>
-          {projects.map(project => (
-            <div key={project.frontmatter.slug}>{project.frontmatter.title}</div>
-          ))}
+          {projects.map(project => {
+            const imageData = getImage(project.frontmatter.featuredImage);
+            return (
+              <div key={project.frontmatter.slug}>
+                {imageData ? (
+                  <GatsbyImage
+                    image={imageData}
+                    alt={project.frontmatter.title}
+                    style={{ width: 200, height: 200, objectFit: "cover" }}
+                  />
+                ) : (
+                  <div style={{ width: 200, height: 200, background: "#ccc", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    No Image
+                  </div>
+                )}
+                {/* <div>{project.frontmatter.title}</div> */}
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>
   );
 };
 
-export default Projects; 
+export default Projects;

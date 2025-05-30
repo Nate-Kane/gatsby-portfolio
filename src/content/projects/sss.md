@@ -8,7 +8,7 @@ technologies:
   - "Vanilla JS"
   - "HTML"
   - "CSS"
-imageUrl: "../../../images/sss.png"
+featuredImage: ../../images/sss.png
 ---
 
 A visually dynamic website for a music venue featuring an interactive background that changes based on the time of day, shifting between sunrise and sunset aesthetics.
