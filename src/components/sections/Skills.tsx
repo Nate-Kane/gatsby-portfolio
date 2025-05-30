@@ -58,7 +58,7 @@ const SkillLogo = styled.img`
   width: 60px;
   height: 60px;
   filter: grayscale(0.2) brightness(1.2) opacity(0.7);
-  opacity: 0.8;
+  opacity: 0.85;
   transition: transform 0.2s, filter 0.2s, opacity 0.2s;
 
   @media (max-width: 700px) {

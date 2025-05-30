@@ -38,6 +38,14 @@ const ProjectsGrid = styled.div`
 
 const ImageThumbnail = styled(GatsbyImage)`
   cursor: pointer;
+  border-radius: 20px;
+  opacity: 0.85;
+  transition: transform 0.2s, filter 0.2s, opacity 0.2s;
+
+  &:hover {
+    opacity: 1;
+    transform: translateY(-4px);
+  }
 `
 
 const Projects: React.FC = () => {
