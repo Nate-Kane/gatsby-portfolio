@@ -31,6 +31,11 @@ const SiteName = styled.div<{ visible: boolean }>`
   opacity: ${props => (props.visible ? 1 : 0)};
   transform: translateX(${props => (props.visible ? "0" : "-40px")});
   transition: opacity 0.3s, transform 0.3s;
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
+  border-radius: 100px;
+  padding-right: 10px;
 
   a {
     color: var(--primary-color);
