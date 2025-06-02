@@ -2,6 +2,7 @@
 category: "Project"
 title: "NK Official Music"
 slug: "nk-official-music"
+order: 5
 description: "Nate's side hobby and passion is music. He built this site as a hub for all things relating to his music."
 projectUrl: "https://www.natekaneofficial.com"
 technologies: 

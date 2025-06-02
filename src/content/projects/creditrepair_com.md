@@ -2,7 +2,8 @@
 category: "Project"
 title: "CreditRepair.com"
 slug: "creditrepair-com"
-description: "Turned design team mockups into new components and pages for CreditRepair.com, and optimized site performance."
+order: 2
+description: "As a frontend web developer for Progrexion, Nate turned wireframes into real components and site pages for CreditRepair.com, and led the project to optimize site performance."
 projectUrl: "https://www.creditrepair.com"
 technologies: 
   - "AEM (Adobe)"

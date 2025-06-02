@@ -2,7 +2,8 @@
 category: "Project"
 title: "Credit.com"
 slug: "credit-com"
-description: "Turned design team mockups into new components and pages for Credit.com, and optimized site performance."
+order: 3
+description: "As a frontend web developer for Progrexion, Nate turned wireframes into real components and site pages for Credit.com, and led the project to optimize site performance."
 projectUrl: "https://www.credit.com"
 technologies: 
   - "AEM (Adobe)"

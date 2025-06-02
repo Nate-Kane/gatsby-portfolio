@@ -265,9 +265,13 @@ const Projects: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState<ProjectNode | null>(null);
   const data = useStaticQuery(graphql`
     query {
-      allMarkdownRemark(filter: {frontmatter: {category: {eq: "Project"}}}) {
+      allMarkdownRemark(
+        filter: {frontmatter: {category: {eq: "Project"}}}
+        sort: {frontmatter: {order: ASC}}
+      ) {
         nodes {
           frontmatter {
+            order
             title
             slug
             description
@@ -345,9 +349,15 @@ const Projects: React.FC = () => {
                   <BottomRow>
                     <ProjectTitleContainer>
                       <ModalTitle>{selectedProject.frontmatter.title}</ModalTitle>
-                      <ProjectLink href={selectedProject.frontmatter.projectUrl} target="_blank" rel="noopener noreferrer">
-                        Visit Project
-                      </ProjectLink>
+                      {selectedProject.frontmatter.slug !== "nk-portfolio" && (
+                        <ProjectLink
+                          href={selectedProject.frontmatter.projectUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          Visit Project
+                        </ProjectLink>
+                      )}
                     </ProjectTitleContainer>
                     <ProjectDescription>{selectedProject.frontmatter.description}</ProjectDescription>
                   </BottomRow>

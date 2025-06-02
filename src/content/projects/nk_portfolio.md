@@ -2,6 +2,7 @@
 category: "Project"
 title: "Nate Kane | Portfolio"
 slug: "nk-portfolio"
+order: 1
 description: "Nate's SWE portfolio highlighting his software engineering skills, experience, and creative web development work."
 projectUrl: "#"
 technologies: 

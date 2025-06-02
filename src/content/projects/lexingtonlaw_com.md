@@ -2,7 +2,8 @@
 category: "Project"
 title: "Lexington Law"
 slug: "lexington-law"
-description: "Turned design team mockups into new components and pages for Lexington Law, and optimized site performance."
+order: 4
+description: "As a frontend web developer for Progrexion, Nate turned wireframes into real components and site pages for Lexington Law, and led the project to optimize site performance."
 projectUrl: "https://www.lexingtonlaw.com"
 technologies: 
   - "AEM (Adobe)"
