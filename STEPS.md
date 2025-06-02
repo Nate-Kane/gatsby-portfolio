@@ -23,6 +23,10 @@ Phase 3: New Content
 4. Build an experience section (like a resume)
 5. Build a resume capability; in the upcoming experience section, an onclick opens up a modal (like a PDF if possible) of my resume! I also want to be able download this as a PDF anytime I want
 
+
+Honorary Phase 3.5:
+1. Ensure consistency across app. Same patterns. No REM/EM units. Only HSL color codes. Fonts, border radiuses, colors, etc.
+
 Phase 4: Server & Domain Setup
 1. Purchase domain name from registrar (Namecheap, Google Domains, etc.)
 2. Create Digital Ocean account and set up a basic droplet ($5-10/month)
