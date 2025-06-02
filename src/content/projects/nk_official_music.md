@@ -2,7 +2,7 @@
 category: "Project"
 title: "NK Official Music"
 slug: "nk-official-music"
-description: "My side passion is music! I built this site as a hub for all things relating to my music; scheduling and advertising upcoming shows, marketing my music, and sharing my latest music projects."
+description: "Nate's side hobby and passion is music. He built this site as a hub for all things relating to his music."
 projectUrl: "https://www.natekaneofficial.com"
 technologies: 
   - "Wix"
