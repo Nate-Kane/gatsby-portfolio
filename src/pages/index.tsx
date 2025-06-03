@@ -7,6 +7,7 @@ import About from "../components/sections/About"
 import Projects from "../components/sections/Projects"
 import Skills from "../components/sections/Skills"
 import Footer from "../components/sections/Footer"
+import Resume from "../components/sections/Resume"
 
 const IndexPage: React.FC<PageProps> = () => {
   const [heroOutOfView, setHeroOutOfView] = React.useState(false);
@@ -18,6 +19,7 @@ const IndexPage: React.FC<PageProps> = () => {
       <Skills />
       <Projects />
       <About />
+      <Resume />
       <Footer />
     </Layout>
   )
