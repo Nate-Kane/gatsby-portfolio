@@ -1,5 +1,5 @@
 import { useStaticQuery, graphql } from "gatsby";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import type { IGatsbyImageData } from "gatsby-plugin-image";
 import styled from "@emotion/styled";
@@ -65,16 +65,18 @@ const ImageFallback = styled.div`
   justifyContent: center;
 `
 
-const ModalOverlay = styled.div`
+const ModalOverlay = styled.div<{ visible: boolean }>`
   position: fixed;
   top: 0;
   right: 0;
   width: 100vw;
   height: 100vh;
-  // background: rgba(21, 52, 136, 0.15);
   background: hsla(215 41% 15.5% / 0.58);
   backdrop-filter: blur(10px);
   z-index: 999;
+  opacity: ${props => (props.visible ? 1 : 0)};
+  transition: opacity 0.3s;
+  pointer-events: ${props => (props.visible ? 'auto' : 'none')};
 `;
 
 const ModalInnerOverlay = styled.div`
@@ -133,9 +135,8 @@ const ModalCloseIcon = styled.div`
   }
 `;
 
-const ModalContent = styled.div`
-  // background: hsla(215 41% 15.5% / 0.58);
-  border-radius: 24px;
+const ModalContent = styled.div<{ visible: boolean }>`
+  border-radius: 20px;
   max-width: 1000px;
   width: 90vw;
   color: var(--primary-color);
@@ -143,13 +144,16 @@ const ModalContent = styled.div`
   flex-direction: column;
   align-items: center;
   position: relative;
+  opacity: ${props => (props.visible ? 1 : 0)};
+  transform: scale(${props => (props.visible ? 1 : 0.97)});
+  transition: opacity 0.3s, transform 0.3s;
 `;
 
 const ModalImage = styled(GatsbyImage)`
   width: 100%;
   max-width: 500px;
   height: auto;
-  border-radius: 16px;
+  border-radius: 20px;
 `;
 
 const TechList = styled.ul`
@@ -163,7 +167,7 @@ const TechList = styled.ul`
 
 const TechItem = styled.li`
   background: rgba(255,255,255,0.08);
-  border-radius: 8px;
+  border-radius: 20px;
   padding: 4px 12px;
   font-size: var(--font-size-sm);
   color: var(--primary-color);
@@ -241,19 +245,19 @@ const ProjectTitleContainer = styled.div`
 
 const ProjectLink = styled.a`
   color: var(--primary-color);
-  background: rgba(21, 52, 136, 0.25);
-  border-radius: 8px;
-  padding: 6px 14px;
+  background: rgba(0,0,0,0.3);
+  border-radius: 20px;
+  border: 1px solid var(--primary-color);
+  padding: 8px 20px;
   text-decoration: none;
   font-weight: 700;
   font-size: var(--font-size-sm);
   transition: background 0.2s;
-  margin-left: 10px;
+  width: fit-content;
+  margin: 5px 0 0 -3px;
+  display: block;
   &:hover {
     background: rgba(21, 52, 136, 0.45);
-  }
-  @media (max-width: 700px) {
-    margin-left: -3px;
   }
 `;
 
@@ -263,6 +267,18 @@ const ProjectDescription = styled.p`
 
 const Projects: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState<ProjectNode | null>(null);
+  const [modalVisible, setModalVisible] = useState(false);
+
+  useEffect(() => {
+    if (selectedProject) {
+      setModalVisible(true);
+    } else if (modalVisible) {
+      // Delay unmount for fade-out
+      const timeout = setTimeout(() => setModalVisible(false), 300);
+      return () => clearTimeout(timeout);
+    }
+  }, [selectedProject]);
+
   const data = useStaticQuery(graphql`
     query {
       allMarkdownRemark(
@@ -302,7 +318,6 @@ const Projects: React.FC = () => {
                 {imageData ? (
                   <ImageContainer
                     onClick={() => {
-                      console.log(project);
                       setSelectedProject(project);
                     }}
                   >
@@ -320,18 +335,24 @@ const Projects: React.FC = () => {
             );
           })}
         </ProjectsGrid>
-        {selectedProject && (
-          <ModalOverlay onClick={() => setSelectedProject(null)}>
+        {(selectedProject || modalVisible) && (
+          <ModalOverlay
+            visible={!!selectedProject}
+            onClick={() => setSelectedProject(null)}
+          >
             <ModalInnerOverlay>
               <ModalCloseIcon onClick={() => setSelectedProject(null)}>
                 <span></span>
                 <span></span>
               </ModalCloseIcon>
-              <ModalContent onClick={e => e.stopPropagation()}>
+              <ModalContent
+                visible={!!selectedProject}
+                onClick={e => e.stopPropagation()}
+              >
                 <ModalContentGrid>
                   <TopRow>
                     <TopLeftCol>
-                      {getImage(selectedProject.frontmatter.featuredImage) && (
+                      {selectedProject && getImage(selectedProject.frontmatter.featuredImage) && (
                         <ModalImage
                           image={getImage(selectedProject.frontmatter.featuredImage)!}
                           alt={selectedProject.frontmatter.title}
@@ -339,27 +360,33 @@ const Projects: React.FC = () => {
                       )}
                     </TopLeftCol>
                     <TopRightCol>
-                      <TechList>
-                        {selectedProject.frontmatter.technologies.map(tech => (
-                          <TechItem key={tech}>{tech}</TechItem>
-                        ))}
-                      </TechList>
+                      {selectedProject && (
+                        <TechList>
+                          {selectedProject.frontmatter.technologies.map(tech => (
+                            <TechItem key={tech}>{tech}</TechItem>
+                          ))}
+                        </TechList>
+                      )}
                     </TopRightCol>
                   </TopRow>
                   <BottomRow>
-                    <ProjectTitleContainer>
-                      <ModalTitle>{selectedProject.frontmatter.title}</ModalTitle>
-                      {selectedProject.frontmatter.slug !== "nk-portfolio" && (
-                        <ProjectLink
-                          href={selectedProject.frontmatter.projectUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          Visit Project
-                        </ProjectLink>
-                      )}
-                    </ProjectTitleContainer>
-                    <ProjectDescription>{selectedProject.frontmatter.description}</ProjectDescription>
+                    {selectedProject && (
+                      <>
+                        <ProjectTitleContainer>
+                          <ModalTitle>{selectedProject.frontmatter.title}</ModalTitle>
+                        </ProjectTitleContainer>
+                        <ProjectDescription>{selectedProject.frontmatter.description}</ProjectDescription>
+                        {selectedProject.frontmatter.slug !== "nk-portfolio" && (
+                          <ProjectLink
+                            href={selectedProject.frontmatter.projectUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            Visit Project
+                          </ProjectLink>
+                        )}
+                      </>
+                    )}
                   </BottomRow>
                 </ModalContentGrid>
               </ModalContent>

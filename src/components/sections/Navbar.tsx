@@ -34,7 +34,7 @@ const SiteName = styled.div<{ visible: boolean }>`
   background: rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(1px);
   -webkit-backdrop-filter: blur(1px);
-  border-radius: 100px;
+  border-radius: 20px;
   padding-right: 10px;
 
   a {
