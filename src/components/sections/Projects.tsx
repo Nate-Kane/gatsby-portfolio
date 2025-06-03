@@ -220,7 +220,7 @@ const BottomRow = styled.div`
   text-align: left;
   gap: 10px;
   margin-left: 2px;
-  margin-top: 10px;
+  margin-top: 20px;
 `;
 
 const ModalTitle = styled.h2`
