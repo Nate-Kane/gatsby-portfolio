@@ -48,11 +48,15 @@ const Education: React.FC = () => {
             <h5>{school.location}<br/>{school.timeline}</h5>
           </SchoolInfo>,
           <SchoolAchievements key={`achieve-${idx}`}>
-            <ul>
-              {school.achievements.map((item, i) => (
-                <li key={i}>{item}</li>
-              ))}
-            </ul>
+            {school.achievements.length > 1 ? (
+              <ul>
+                {school.achievements.map((item, i) => (
+                  <li key={i}>{item}</li>
+                ))}
+              </ul>
+            ) : (
+              <p>{school.achievements[0]}</p>
+            )}
           </SchoolAchievements>
         ])}
       </EducationGrid>

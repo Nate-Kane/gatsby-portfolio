@@ -49,11 +49,15 @@ const Additional: React.FC = () => {
         {categories.map((cat, idx) => [
           <CategoryLabel key={`label-${idx}`}>{cat.label}</CategoryLabel>,
           <CategoryItems key={`items-${idx}`}>
-            <ul>
-              {cat.items.map((item, i) => (
-                <li key={i}>{item}</li>
-              ))}
-            </ul>
+            {cat.items.length > 1 ? (
+              <ul>
+                {cat.items.map((item, i) => (
+                  <li key={i}>{item}</li>
+                ))}
+              </ul>
+            ) : (
+              <p>{cat.items[0]}</p>
+            )}
           </CategoryItems>
         ])}
       </AdditionalGrid>
