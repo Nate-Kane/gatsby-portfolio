@@ -44,7 +44,7 @@ const Skills: React.FC = () => {
   const skills: Skill[] = data?.markdownRemark?.frontmatter?.skills || [];
 
   return (
-    <SkillsSection>
+    <SkillsSection className="resume-section">
       <SectionTitle>SKILLS</SectionTitle>
       <SkillsGrid>
         {skills.map((skill, idx) => (

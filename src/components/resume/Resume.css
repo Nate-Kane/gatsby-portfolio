@@ -4,7 +4,7 @@
 }
 
 .resume-section {
-    margin-bottom: 30px;
+    margin-bottom: 40px;
 }
 
 /* My name */
@@ -45,6 +45,7 @@
     letter-spacing: 0.08rem;
     font-style: italic;
     text-transform: initial;
+    margin-top: 5px;
 }
 
 .resume p {

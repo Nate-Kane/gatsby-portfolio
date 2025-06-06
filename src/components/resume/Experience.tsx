@@ -23,9 +23,7 @@ const Responsibilities = styled.div``;
 const CompanyName = styled.h2`
   margin-bottom: 5px;
 `
-const PositionName = styled.h4`
-  margin-bottom: 5px;
-`
+const PositionName = styled.h4``
 
 const Experience: React.FC = () => {
   const data = useStaticQuery(graphql`
@@ -47,7 +45,7 @@ const Experience: React.FC = () => {
   const positions: Position[] = data?.markdownRemark?.frontmatter?.positions || [];
 
   return (
-    <ExperienceSection>
+    <ExperienceSection className="resume-section">
       <SectionTitle>Experience</SectionTitle>
       <ExperienceGrid>
         {positions.map((pos, idx) => [
