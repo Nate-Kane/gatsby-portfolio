@@ -16,7 +16,7 @@ const ExperienceGrid = styled.div`
   display: grid;
   grid-template-columns: 1.4fr 3fr;
   align-items: start;
-  gap: 2.5rem 3rem;
+  gap: 2rem 2rem;
 `;
 const PositionInfo = styled.div``;
 const Responsibilities = styled.div``;

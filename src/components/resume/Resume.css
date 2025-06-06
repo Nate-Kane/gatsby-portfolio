@@ -5,25 +5,25 @@
 }
 
 .resume-section {
-    margin-bottom: 60px;
+    margin-bottom: 40px;
 }
 
 /* My name */
 .resume h1 {
-    font-size: 60px;
+    font-size: 40px;
     margin-left: -5px;
 }
 
 /* Company Names */
 .resume h2 {
     font-weight: 600;
-    font-size: 16px;
+    font-size: 14px;
     letter-spacing: 0.18rem;
 }
 
 /* Section headers */
 .resume h3 {
-    font-size: 15px;
+    font-size: 13px;
     color: #666666;
     width: 100%;
     border-bottom: 1px solid #666666;
@@ -33,7 +33,7 @@
 
 /* Content Intros (job titles, skill sections */
 .resume h4 {
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 400;
     letter-spacing: 0.08rem;
     min-width: fit-content;
@@ -42,7 +42,7 @@
 
 /* Position timeline */
 .resume h5 {
-    font-size: 12px;
+    font-size: 10px;
     font-weight: 300;
     letter-spacing: 0.08rem;
     font-style: italic;
@@ -51,17 +51,19 @@
 }
 
 .resume p {
-    font-size: 11.5px;
+    font-size: 11px;
     letter-spacing: 0.05rem;
     text-transform: initial;
     line-height: 1.3rem;
+    font-weight: 300;
 }
 
 .resume li {
-    font-size: 11.5px;
+    font-size: 11px;
     letter-spacing: 0.05rem;
     text-transform: initial;
     line-height: 1.3rem;
     margin-bottom: 15px; 
-    /* margin-left: 15px; */
+    font-weight: 300;
+    padding-left: 10px;
 }

@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useRef } from "react";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import styled from "@emotion/styled";
-import { StaticImage } from "gatsby-plugin-image";
 import { graphql, useStaticQuery } from "gatsby";
+import Resume from "../sections/Resume";
+// @ts-ignore
+import html2pdf from "html2pdf.js";
 
 const AboutSection = styled.section`
   padding: 80px 0;
@@ -68,7 +70,7 @@ const AboutContent = styled.div`
 
 const AboutText = styled.div``
 
-const ViewResume = styled.a`
+const ViewResume = styled.button`
   color: var(--primary-color);
   background: rgba(0,0,0,0.3);
   border-radius: 20px;
@@ -81,12 +83,22 @@ const ViewResume = styled.a`
   width: fit-content;
   margin: 0 auto;
   display: block;
+  cursor: pointer;
   &:hover {
     background: rgba(21, 52, 136, 0.45);
   }
   @media (max-width: 970px) {
     margin-top: 18px;
   }
+`;
+
+const HiddenDiv = styled.div`
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  width: 0;
+  height: 0;
+  overflow: hidden;
 `;
 
 const About: React.FC = () => {
@@ -101,6 +113,24 @@ const About: React.FC = () => {
   `);
 
   const imageData = getImage(data.portrait);
+  const resumeRef = useRef<HTMLDivElement>(null);
+
+  const handleViewResume = async () => {
+    if (resumeRef.current) {
+      const opt = {
+        margin: 0.4,
+        filename: 'Nate-Kane-Resume.pdf',
+        html2canvas: { scale: 3 },
+        jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+      };
+      const worker = html2pdf().from(resumeRef.current).set(opt);
+      const pdfBlob: Blob = await worker.outputPdf('blob');
+      const pdfUrl = URL.createObjectURL(pdfBlob);
+      window.open(pdfUrl, '_blank');
+      // Optionally revoke the URL after a delay
+      setTimeout(() => URL.revokeObjectURL(pdfUrl), 10000);
+    }
+  };
 
   return (
     <AboutSection className="about" id="about">
@@ -127,12 +157,15 @@ const About: React.FC = () => {
                 Led by consistent and dedicated work, I aim to bring that creativity and curiosity into the problems I solve at work.
             </AboutText>
             <ViewResume
-                href='#'
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Learn about my professional experience
+              onClick={handleViewResume}
+              as="button"
+              type="button"
+            >
+              Learn about my professional experience
             </ViewResume>
+            <HiddenDiv>
+              <Resume ref={resumeRef} />
+            </HiddenDiv>
           </AboutContent>
         </AboutContainer>
       </div>
