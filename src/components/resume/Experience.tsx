@@ -1,43 +1,69 @@
 import React from "react";
 import styled from "@emotion/styled";
+import { graphql, useStaticQuery } from "gatsby";
+
+interface Position {
+  company: string;
+  position: string;
+  location: string;
+  timeline: string;
+  responsibilities: string[];
+}
+
+const ExperienceSection = styled.div``;
+const SectionTitle = styled.h3``;
+const ExperienceGrid = styled.div`
+  display: grid;
+  grid-template-columns: 1.4fr 3fr;
+  align-items: start;
+  gap: 2.5rem 3rem;
+`;
+const PositionInfo = styled.div``;
+const Responsibilities = styled.div``;
+const CompanyName = styled.h2`
+  margin-bottom: 5px;
+`
+const PositionName = styled.h4`
+  margin-bottom: 5px;
+`
 
 const Experience: React.FC = () => {
+  const data = useStaticQuery(graphql`
+    query ExperienceQuery {
+      markdownRemark(fileAbsolutePath: { regex: "/resume\\/experience.md$/" }) {
+        frontmatter {
+          positions {
+            company
+            position
+            location
+            timeline
+            responsibilities
+          }
+        }
+      }
+    }
+  `);
 
-  const ExperienceSection = styled.div``
-
-  const SectionTitle = styled.h3``;
-
-  const Position = styled.div``
-
-  const PositionInfo = styled.div``
-
-  const Responsabilities = styled.div``
-
-  const ExperienceGrid = styled.div`
-    display: grid;
-    grid-template-columns: 1.8fr 3fr;
-    align-items: start;
-    gap: 2.5rem 3rem;
-  `;
+  const positions: Position[] = data?.markdownRemark?.frontmatter?.positions || [];
 
   return (
     <ExperienceSection>
       <SectionTitle>Experience</SectionTitle>
       <ExperienceGrid>
-        <Position>
-          <PositionInfo>
-            <h2>ShipInsure</h2> // company name
-            <h4>Software Engineer,</h4> // position name
-            <h5>Lehi, Utah (Remote) <br/> 2024 - Present</h5> // timeline
-          </PositionInfo>
-          <Responsabilities>
+        {positions.map((pos, idx) => [
+          <PositionInfo key={`info-${idx}`}>
+            <CompanyName>{pos.company}</CompanyName>
+            <PositionName>{pos.position},</PositionName>
+            <h5>{pos.location} <br/> {pos.timeline}</h5>
+          </PositionInfo>,
+          <Responsibilities key={`resp-${idx}`}>
             <ul>
-              <li>Responsability 1</li>
-              <li>Responsability 2</li>
-              <li>Responsability 3</li>
+              {pos.responsibilities.map((item, i) => (
+                <li key={i}>{item}</li>
+              ))}
             </ul>
-          </Responsabilities>
-        </Position>
+          </Responsibilities>
+        ])}
       </ExperienceGrid>
     </ExperienceSection>
   );

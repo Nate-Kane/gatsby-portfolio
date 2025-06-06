@@ -2,13 +2,18 @@ import React from "react";
 import styled from "@emotion/styled";
 import { graphql, useStaticQuery } from "gatsby";
 
+interface Skill {
+  header: string;
+  content: string;
+}
+
 const SkillsSection = styled.div`
   margin-bottom: 2.5rem;
 `;
 
 const SkillsGrid = styled.div`
   display: grid;
-  grid-template-columns: 1.8fr 3fr;
+  grid-template-columns: 1.4fr 3fr;
   align-items: start;
   gap: 2.5rem 3rem;
 `;
@@ -36,13 +41,13 @@ const Skills: React.FC = () => {
     }
   `);
 
-  const skills = data?.markdownRemark?.frontmatter?.skills || [];
+  const skills: Skill[] = data?.markdownRemark?.frontmatter?.skills || [];
 
   return (
     <SkillsSection>
       <SectionTitle>SKILLS</SectionTitle>
       <SkillsGrid>
-        {skills.map((skill: any, idx: number) => (
+        {skills.map((skill, idx) => (
           <React.Fragment key={idx}>
             <SkillHeader>{skill.header}</SkillHeader>
             <SkillContent>{skill.content}</SkillContent>
