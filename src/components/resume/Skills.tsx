@@ -14,7 +14,6 @@ const SkillsGrid = styled.div`
 `;
 
 const SkillHeader = styled.h4`
-  font-style: italic;
 `;
 
 const SkillContent = styled.p`

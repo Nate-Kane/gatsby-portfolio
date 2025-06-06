@@ -3,13 +3,17 @@ import styled from "@emotion/styled";
 
 const Education: React.FC = () => {
 
+  const SectionTitle = styled.h3`
+`;
+
   const EducationSection = styled.div`
   
   `
 
   return (
     <EducationSection>
-        Education
+      <SectionTitle>Education</SectionTitle>
+      
     </EducationSection>
   );
 };

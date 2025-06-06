@@ -1,6 +1,9 @@
 import React from "react";
 import styled from "@emotion/styled";
 
+const SectionTitle = styled.h3`
+`;
+
 const Additional: React.FC = () => {
 
   const AdditionalSection = styled.div`
@@ -9,7 +12,8 @@ const Additional: React.FC = () => {
 
   return (
     <AdditionalSection>
-        Additional
+      <SectionTitle>Additional</SectionTitle>
+        
     </AdditionalSection>
   );
 };
