@@ -3,8 +3,6 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import styled from "@emotion/styled";
 import { graphql, useStaticQuery } from "gatsby";
 import Resume from "../sections/Resume";
-// @ts-ignore
-import html2pdf from "html2pdf.js";
 
 const AboutSection = styled.section`
   padding: 80px 0;
@@ -117,6 +115,8 @@ const About: React.FC = () => {
 
   const handleViewResume = async () => {
     if (resumeRef.current) {
+      // @ts-ignore
+      const html2pdf = (await import("html2pdf.js")).default;
       const opt = {
         margin: 0.4,
         filename: 'Nate-Kane-Resume.pdf',
@@ -127,7 +127,6 @@ const About: React.FC = () => {
       const pdfBlob: Blob = await worker.outputPdf('blob');
       const pdfUrl = URL.createObjectURL(pdfBlob);
       window.open(pdfUrl, '_blank');
-      // Optionally revoke the URL after a delay
       setTimeout(() => URL.revokeObjectURL(pdfUrl), 10000);
     }
   };
