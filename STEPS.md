@@ -12,16 +12,14 @@ Phase 2: Content Migration
 3. ~~Set up empty components as placeholders~~
 4. ~~Set up general styling & background~~
 5. ~~Establish a style guide (fonts, font sizes, spacing, colors, etc so that as I add content it all looks consistent)~~
-6. Migrate full components from current portfolio to Gatsby
-
---- NATE - fix the on-hover lettering for skill mobile. The text bleeds off page. Just need more space from the edges
+6. ~~Migrate full components from current portfolio to Gatsby~~
 
 Phase 3: New Content
 1. Add additional projects (Progrexion work, drive sunny, others?)
 2. Remove bad project (SSS?)
-3. Build an about me section
-4. Build an experience section (like a resume)
-5. Build a resume capability; in the upcoming experience section, an onclick opens up a modal (like a PDF if possible) of my resume! I also want to be able download this as a PDF anytime I want
+3. ~~Build an about me section~~
+4. ~~Build an experience section (like a resume)~~
+5. ~~Build a resume capability; in the upcoming experience section, an onclick opens up a modal (like a PDF if possible) of my resume! I also want to be able download this as a PDF anytime I want~~
 
 
 Honorary Phase 3.5:
